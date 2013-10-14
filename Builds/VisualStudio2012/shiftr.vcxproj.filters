@@ -1326,6 +1326,15 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp">
       <Filter>Juce Modules\juce_audio_plugin_client\VST</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\DspProcessorGroup.cpp">
+      <Filter>shiftr\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Phasor.cpp">
+      <Filter>shiftr\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Oscillator.cpp">
+      <Filter>shiftr\Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
@@ -2548,6 +2557,21 @@
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode_Header.h">
       <Filter>Juce Modules\juce_audio_plugin_client\RTAS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DspProcessor.h">
+      <Filter>shiftr\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DspProcessorGroup.h">
+      <Filter>shiftr\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Phasor.h">
+      <Filter>shiftr\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Parameters.h">
+      <Filter>shiftr\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Oscillator.h">
+      <Filter>shiftr\Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

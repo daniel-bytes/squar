@@ -13,6 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
+class DspProcessorGroup;
+class Parameter;
 
 //==============================================================================
 /**
@@ -65,6 +67,10 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData);
     void setStateInformation (const void* data, int sizeInBytes);
+
+private:
+	ScopedPointer<DspProcessorGroup> processors;
+	Array<ScopedPointer<Parameter>> parameters;
 
 private:
     //==============================================================================

@@ -133,6 +133,9 @@
   <ItemGroup>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\utility\juce_PluginUtilities.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp" />
+    <ClCompile Include="..\..\Source\DspProcessorGroup.cpp" />
+    <ClCompile Include="..\..\Source\Oscillator.cpp" />
+    <ClCompile Include="..\..\Source\Phasor.cpp" />
     <ClCompile Include="..\..\Source\PluginProcessor.cpp" />
     <ClCompile Include="..\..\Source\PluginEditor.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
@@ -1154,6 +1157,11 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\utility\juce_IncludeModuleHeaders.h" />
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\utility\juce_IncludeSystemHeaders.h" />
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\utility\juce_PluginHostType.h" />
+    <ClInclude Include="..\..\Source\DspProcessor.h" />
+    <ClInclude Include="..\..\Source\DspProcessorGroup.h" />
+    <ClInclude Include="..\..\Source\Oscillator.h" />
+    <ClInclude Include="..\..\Source\Parameters.h" />
+    <ClInclude Include="..\..\Source\Phasor.h" />
     <ClInclude Include="..\..\Source\PluginProcessor.h" />
     <ClInclude Include="..\..\Source\PluginEditor.h" />
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h" />

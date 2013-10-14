@@ -10,15 +10,25 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-
+#include "DspProcessorGroup.h"
+#include "Parameters.h"
+#include "Oscillator.h"
 
 //==============================================================================
 ShiftrAudioProcessor::ShiftrAudioProcessor()
 {
+	parameters.add(new Parameter(kParameterType_Gain, "Gain", "Gain", 1.0));
+	parameters.add(new Parameter(kParameterType_Freq, "Frequency", "Frequency", 1000.0));
 }
 
 ShiftrAudioProcessor::~ShiftrAudioProcessor()
 {
+	for (auto p : parameters)
+	{
+		delete p;
+	}
+
+	parameters.clear();
 }
 
 //==============================================================================
@@ -29,26 +39,28 @@ const String ShiftrAudioProcessor::getName() const
 
 int ShiftrAudioProcessor::getNumParameters()
 {
-    return 0;
+	return kParameterType_NumParameters;
 }
 
 float ShiftrAudioProcessor::getParameter (int index)
 {
-    return 0.0f;
+	return parameters[index]->value;
 }
 
 void ShiftrAudioProcessor::setParameter (int index, float newValue)
 {
+	parameters[index]->value = newValue;
+	this->processors->parameterChanged(parameters[index]);
 }
 
 const String ShiftrAudioProcessor::getParameterName (int index)
 {
-    return String::empty;
+	return parameters[index]->name;
 }
 
 const String ShiftrAudioProcessor::getParameterText (int index)
 {
-    return String::empty;
+	return parameters[index]->text;
 }
 
 const String ShiftrAudioProcessor::getInputChannelName (int channelIndex) const
@@ -125,14 +137,17 @@ void ShiftrAudioProcessor::changeProgramName (int index, const String& newName)
 //==============================================================================
 void ShiftrAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
-    // Use this method as the place to do any pre-playback
-    // initialisation that you need..
+	int inputs = this->getNumInputChannels();
+	int outputs = this->getNumOutputChannels();
+
+	processors = new DspProcessorGroup(sampleRate, inputs, outputs);
+
+	processors->Push(new Oscillator(sampleRate, inputs, outputs, parameters[kParameterType_Freq]->value, parameters[kParameterType_Gain]->value));
 }
 
 void ShiftrAudioProcessor::releaseResources()
 {
-    // When playback stops, you can use this as an opportunity to free up any
-    // spare memory, etc.
+	processors = nullptr;
 }
 
 void ShiftrAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
@@ -143,7 +158,13 @@ void ShiftrAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
     {
         float* channelData = buffer.getSampleData (channel);
 
-        // ..do something to the data...
+		for (int i = 0; i < buffer.getNumSamples(); i++) {
+			float data = *(channelData + i);
+
+			data = processors->process(data, channel);
+
+			*(channelData + i) = data;
+		}
     }
 
     // In case we have more outputs than inputs, we'll clear any output
@@ -158,7 +179,7 @@ void ShiftrAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
 //==============================================================================
 bool ShiftrAudioProcessor::hasEditor() const
 {
-    return true; // (change this to false if you choose to not supply an editor)
+    return false; // (change this to false if you choose to not supply an editor)
 }
 
 AudioProcessorEditor* ShiftrAudioProcessor::createEditor()
