@@ -13,18 +13,18 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class ShiftrEngine;
+class AudioEngine;
 class Parameters;
 
 //==============================================================================
 /**
 */
-class ShiftrAudioProcessor  : public AudioProcessor
+class SquarAudioProcessor  : public AudioProcessor
 {
 public:
     //==============================================================================
-    ShiftrAudioProcessor();
-    ~ShiftrAudioProcessor();
+    SquarAudioProcessor();
+    ~SquarAudioProcessor();
 
     //==============================================================================
     void prepareToPlay (double sampleRate, int samplesPerBlock);
@@ -69,12 +69,12 @@ public:
     void setStateInformation (const void* data, int sizeInBytes);
 
 private:
-	ScopedPointer<ShiftrEngine> engine;
+	ScopedPointer<AudioEngine> engine;
 	ScopedPointer<Parameters> parameters;
 
 private:
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (ShiftrAudioProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (SquarAudioProcessor)
 };
 
 #endif  // PLUGINPROCESSOR_H_INCLUDED

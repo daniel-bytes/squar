@@ -10,79 +10,79 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "ShiftrEngine.h"
+#include "AudioEngine.h"
 
 
 //==============================================================================
-ShiftrAudioProcessor::ShiftrAudioProcessor()
+SquarAudioProcessor::SquarAudioProcessor()
 {
 	parameters = new Parameters();
-	engine = new ShiftrEngine();
+	engine = new AudioEngine();
 
 	parameters->registerListener(engine);
 }
 
-ShiftrAudioProcessor::~ShiftrAudioProcessor()
+SquarAudioProcessor::~SquarAudioProcessor()
 {
 	engine = nullptr;
 	parameters = nullptr;
 }
 
 //==============================================================================
-const String ShiftrAudioProcessor::getName() const
+const String SquarAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-int ShiftrAudioProcessor::getNumParameters()
+int SquarAudioProcessor::getNumParameters()
 {
 	return parameters->size();
 }
 
-float ShiftrAudioProcessor::getParameter (int index)
+float SquarAudioProcessor::getParameter (int index)
 {
 	auto parameter = parameters->get(index);
 	return parameter->value;
 }
 
-void ShiftrAudioProcessor::setParameter (int index, float newValue)
+void SquarAudioProcessor::setParameter (int index, float newValue)
 {
 	parameters->set(index, newValue);
 }
 
-const String ShiftrAudioProcessor::getParameterName (int index)
+const String SquarAudioProcessor::getParameterName (int index)
 {
 	auto parameter = parameters->get(index);
 	return parameter->name;
 }
 
-const String ShiftrAudioProcessor::getParameterText (int index)
+const String SquarAudioProcessor::getParameterText (int index)
 {
 	auto parameter = parameters->get(index);
 	return parameter->text;
 }
 
-const String ShiftrAudioProcessor::getInputChannelName (int channelIndex) const
+const String SquarAudioProcessor::getInputChannelName (int channelIndex) const
 {
     return String (channelIndex + 1);
 }
 
-const String ShiftrAudioProcessor::getOutputChannelName (int channelIndex) const
+const String SquarAudioProcessor::getOutputChannelName (int channelIndex) const
 {
     return String (channelIndex + 1);
 }
 
-bool ShiftrAudioProcessor::isInputChannelStereoPair (int index) const
+bool SquarAudioProcessor::isInputChannelStereoPair (int index) const
 {
     return true;
 }
 
-bool ShiftrAudioProcessor::isOutputChannelStereoPair (int index) const
+bool SquarAudioProcessor::isOutputChannelStereoPair (int index) const
 {
     return true;
 }
 
-bool ShiftrAudioProcessor::acceptsMidi() const
+bool SquarAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -91,7 +91,7 @@ bool ShiftrAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool ShiftrAudioProcessor::producesMidi() const
+bool SquarAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -100,41 +100,41 @@ bool ShiftrAudioProcessor::producesMidi() const
    #endif
 }
 
-bool ShiftrAudioProcessor::silenceInProducesSilenceOut() const
+bool SquarAudioProcessor::silenceInProducesSilenceOut() const
 {
     return false;
 }
 
-double ShiftrAudioProcessor::getTailLengthSeconds() const
+double SquarAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int ShiftrAudioProcessor::getNumPrograms()
+int SquarAudioProcessor::getNumPrograms()
 {
     return 0;
 }
 
-int ShiftrAudioProcessor::getCurrentProgram()
+int SquarAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void ShiftrAudioProcessor::setCurrentProgram (int index)
+void SquarAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const String ShiftrAudioProcessor::getProgramName (int index)
+const String SquarAudioProcessor::getProgramName (int index)
 {
     return String::empty;
 }
 
-void ShiftrAudioProcessor::changeProgramName (int index, const String& newName)
+void SquarAudioProcessor::changeProgramName (int index, const String& newName)
 {
 }
 
 //==============================================================================
-void ShiftrAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void SquarAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
 	int inputs = this->getNumInputChannels();
 	int outputs = this->getNumOutputChannels();
@@ -143,11 +143,11 @@ void ShiftrAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock
 	parameters->initListeners();
 }
 
-void ShiftrAudioProcessor::releaseResources()
+void SquarAudioProcessor::releaseResources()
 {
 }
 
-void ShiftrAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void SquarAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
 	AudioPlayHead::CurrentPositionInfo posInfo;
 	this->getPlayHead()->getCurrentPosition(posInfo);
@@ -178,25 +178,25 @@ void ShiftrAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& 
 }
 
 //==============================================================================
-bool ShiftrAudioProcessor::hasEditor() const
+bool SquarAudioProcessor::hasEditor() const
 {
     return false; // (change this to false if you choose to not supply an editor)
 }
 
-AudioProcessorEditor* ShiftrAudioProcessor::createEditor()
+AudioProcessorEditor* SquarAudioProcessor::createEditor()
 {
-    return new ShiftrAudioProcessorEditor (this);
+    return new SquarAudioProcessorEditor (this);
 }
 
 //==============================================================================
-void ShiftrAudioProcessor::getStateInformation (MemoryBlock& destData)
+void SquarAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
 }
 
-void ShiftrAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void SquarAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
@@ -206,5 +206,5 @@ void ShiftrAudioProcessor::setStateInformation (const void* data, int sizeInByte
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new ShiftrAudioProcessor();
+    return new SquarAudioProcessor();
 }

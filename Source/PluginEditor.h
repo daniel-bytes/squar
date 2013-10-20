@@ -18,11 +18,11 @@
 //==============================================================================
 /**
 */
-class ShiftrAudioProcessorEditor  : public AudioProcessorEditor
+class SquarAudioProcessorEditor  : public AudioProcessorEditor
 {
 public:
-    ShiftrAudioProcessorEditor (ShiftrAudioProcessor* ownerFilter);
-    ~ShiftrAudioProcessorEditor();
+    SquarAudioProcessorEditor (SquarAudioProcessor* ownerFilter);
+    ~SquarAudioProcessorEditor();
 
     //==============================================================================
     // This is just a standard Juce paint method...

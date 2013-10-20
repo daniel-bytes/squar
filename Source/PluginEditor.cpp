@@ -13,19 +13,19 @@
 
 
 //==============================================================================
-ShiftrAudioProcessorEditor::ShiftrAudioProcessorEditor (ShiftrAudioProcessor* ownerFilter)
+SquarAudioProcessorEditor::SquarAudioProcessorEditor (SquarAudioProcessor* ownerFilter)
     : AudioProcessorEditor (ownerFilter)
 {
     // This is where our plugin's editor size is set.
     setSize (400, 300);
 }
 
-ShiftrAudioProcessorEditor::~ShiftrAudioProcessorEditor()
+SquarAudioProcessorEditor::~SquarAudioProcessorEditor()
 {
 }
 
 //==============================================================================
-void ShiftrAudioProcessorEditor::paint (Graphics& g)
+void SquarAudioProcessorEditor::paint (Graphics& g)
 {
     g.fillAll (Colours::white);
     g.setColour (Colours::black);

@@ -13,10 +13,10 @@ BEGIN
   BEGIN
     BLOCK "040904E4"
     BEGIN
-      VALUE "CompanyName",  "danielbytes\0"
-      VALUE "FileDescription",  "shiftr\0"
+      VALUE "CompanyName",  "d.bytes\0"
+      VALUE "FileDescription",  "squar\0"
       VALUE "FileVersion",  "1.0.0\0"
-      VALUE "ProductName",  "shiftr\0"
+      VALUE "ProductName",  "squar\0"
       VALUE "ProductVersion",  "1.0.0\0"
     END
   END

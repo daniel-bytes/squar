@@ -181,19 +181,19 @@
  #define JucePlugin_Build_AAX              0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "shiftr"
+ #define JucePlugin_Name                   "squar"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "shiftr"
+ #define JucePlugin_Desc                   "squar"
 #endif
 #ifndef  JucePlugin_Manufacturer
- #define JucePlugin_Manufacturer           "daniel bytes"
+ #define JucePlugin_Manufacturer           "d.bytes"
 #endif
 #ifndef  JucePlugin_ManufacturerCode
  #define JucePlugin_ManufacturerCode       'dbyt'
 #endif
 #ifndef  JucePlugin_PluginCode
- #define JucePlugin_PluginCode             'shft'
+ #define JucePlugin_PluginCode             'squr'
 #endif
 #ifndef  JucePlugin_MaxNumInputChannels
  #define JucePlugin_MaxNumInputChannels    2
@@ -244,13 +244,13 @@
  #define JucePlugin_AUExportPrefix         JuceDemoProjectAU
 #endif
 #ifndef  JucePlugin_AUExportPrefixQuoted
- #define JucePlugin_AUExportPrefixQuoted   "shiftr"
+ #define JucePlugin_AUExportPrefixQuoted   "squar"
 #endif
 #ifndef  JucePlugin_AUManufacturerCode
  #define JucePlugin_AUManufacturerCode     JucePlugin_ManufacturerCode
 #endif
 #ifndef  JucePlugin_CFBundleIdentifier
- #define JucePlugin_CFBundleIdentifier     com.danielbytes.shiftr
+ #define JucePlugin_CFBundleIdentifier     com.dbytes.squar
 #endif
 #ifndef  JucePlugin_RTASCategory
  #define JucePlugin_RTASCategory           ePlugInCategory_None
@@ -268,7 +268,7 @@
  #define JucePlugin_RTASDisableMultiMono   0
 #endif
 #ifndef  JucePlugin_AAXIdentifier
- #define JucePlugin_AAXIdentifier          com.danielbytes.shiftr
+ #define JucePlugin_AAXIdentifier          com.dbytes.squar
 #endif
 #ifndef  JucePlugin_AAXManufacturerCode
  #define JucePlugin_AAXManufacturerCode    JucePlugin_ManufacturerCode
