@@ -10,25 +10,22 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "DspProcessorGroup.h"
-#include "Parameters.h"
-#include "Oscillator.h"
+#include "ShiftrEngine.h"
+
 
 //==============================================================================
 ShiftrAudioProcessor::ShiftrAudioProcessor()
 {
-	parameters.add(new Parameter(kParameterType_Gain, "Gain", "Gain", 1.0));
-	parameters.add(new Parameter(kParameterType_Freq, "Frequency", "Frequency", 1000.0));
+	parameters = new Parameters();
+	engine = new ShiftrEngine();
+
+	parameters->registerListener(engine);
 }
 
 ShiftrAudioProcessor::~ShiftrAudioProcessor()
 {
-	for (auto p : parameters)
-	{
-		delete p;
-	}
-
-	parameters.clear();
+	engine = nullptr;
+	parameters = nullptr;
 }
 
 //==============================================================================
@@ -39,28 +36,30 @@ const String ShiftrAudioProcessor::getName() const
 
 int ShiftrAudioProcessor::getNumParameters()
 {
-	return kParameterType_NumParameters;
+	return parameters->size();
 }
 
 float ShiftrAudioProcessor::getParameter (int index)
 {
-	return parameters[index]->value;
+	auto parameter = parameters->get(index);
+	return parameter->value;
 }
 
 void ShiftrAudioProcessor::setParameter (int index, float newValue)
 {
-	parameters[index]->value = newValue;
-	this->processors->parameterChanged(parameters[index]);
+	parameters->set(index, newValue);
 }
 
 const String ShiftrAudioProcessor::getParameterName (int index)
 {
-	return parameters[index]->name;
+	auto parameter = parameters->get(index);
+	return parameter->name;
 }
 
 const String ShiftrAudioProcessor::getParameterText (int index)
 {
-	return parameters[index]->text;
+	auto parameter = parameters->get(index);
+	return parameter->text;
 }
 
 const String ShiftrAudioProcessor::getInputChannelName (int channelIndex) const
@@ -139,29 +138,29 @@ void ShiftrAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock
 {
 	int inputs = this->getNumInputChannels();
 	int outputs = this->getNumOutputChannels();
-
-	processors = new DspProcessorGroup(sampleRate, inputs, outputs);
-
-	processors->Push(new Oscillator(sampleRate, inputs, outputs, parameters[kParameterType_Freq]->value, parameters[kParameterType_Gain]->value));
+	
+	engine->init(sampleRate, inputs, outputs);
+	parameters->initListeners();
 }
 
 void ShiftrAudioProcessor::releaseResources()
 {
-	processors = nullptr;
 }
 
 void ShiftrAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
+	engine->processMidi(midiMessages);
+
     // This is the place where you'd normally do the guts of your plugin's
     // audio processing...
     for (int channel = 0; channel < getNumInputChannels(); ++channel)
     {
-        float* channelData = buffer.getSampleData (channel);
+        float* channelData = buffer.getSampleData(channel);
 
 		for (int i = 0; i < buffer.getNumSamples(); i++) {
 			float data = *(channelData + i);
 
-			data = processors->process(data, channel);
+			data = engine->process(data, channel);
 
 			*(channelData + i) = data;
 		}

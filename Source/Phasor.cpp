@@ -1,14 +1,12 @@
 #include "Phasor.h"
-
-void Phasor::configureIncrement()
-{
-	increment = (1.0 / sampleRate) * frequency;
-}
+#include "Utilities.h"
 
 float Phasor::process(float input, int channel)
 {
-	if ((value += increment) >= .5) {
-		value -= 1.0;
+	float inc = (1.0 / sampleRate) * frequency;
+
+	if ((value += inc) >= 1.f) {
+		value -= 1.f;
 	}
 
 	return value;

@@ -1,23 +1,14 @@
 #ifndef __PHASOR_H__
 #define __PHASOR_H__
 
-#include "DspProcessor.h"
+#include "DspElement.h"
 
 class Phasor
-	: public DspProcessor
+	: public DspElement
 {
 public:
-	Phasor(double sampleRate, int numInputChannels, int numOutputChannels, float frequency)
-		: DspProcessor(sampleRate, numInputChannels, numOutputChannels)
-	{
-		this->frequency = frequency;
-		this->increment = 0;
-		this->value = 0;
-
-		this->configureIncrement();
-	}
-
-	virtual ~Phasor()
+	Phasor()
+		: value(0), frequency(1000)
 	{
 	}
 
@@ -25,18 +16,11 @@ public:
 	virtual float process(float input, int channel);
 
 public:
-	float getFrequency() const { return frequency; }
-	
 	void setFrequency(float value) {
 		frequency = value;
-		configureIncrement();
 	}
 
 private:
-	void configureIncrement();
-
-private:
-	float increment;
 	float frequency;
 	float value;
 };

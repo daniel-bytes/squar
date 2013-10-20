@@ -4,9 +4,6 @@
     <Filter Include="shiftr">
       <UniqueIdentifier>{3302C622-9128-A74C-46BC-54C2E4DEB920}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shiftr\Source">
-      <UniqueIdentifier>{EB6C01F7-5F1B-6E62-3BFA-B0FBE1261C90}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Juce Modules">
       <UniqueIdentifier>{422C46B7-0467-2DB0-BF3C-16DFCAFD69AC}</UniqueIdentifier>
     </Filter>
@@ -283,13 +280,19 @@
     <Filter Include="Juce Modules\juce_audio_plugin_client\VST">
       <UniqueIdentifier>{9018f0dd-3076-4750-8f56-841a0948ebd8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shiftr\Application">
+      <UniqueIdentifier>{EB6C01F7-5F1B-6E62-3BFA-B0FBE1261C90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shiftr\DSP">
+      <UniqueIdentifier>{5f75d7a6-8e28-4877-a999-6bbce5cef037}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
-      <Filter>shiftr\Source</Filter>
+      <Filter>shiftr\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\PluginEditor.cpp">
-      <Filter>shiftr\Source</Filter>
+      <Filter>shiftr\Application</Filter>
     </ClCompile>
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.cpp">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
@@ -1326,22 +1329,34 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp">
       <Filter>Juce Modules\juce_audio_plugin_client\VST</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\DspProcessorGroup.cpp">
-      <Filter>shiftr\Source</Filter>
+    <ClCompile Include="..\..\Source\ShiftrEngine.cpp">
+      <Filter>shiftr\DSP</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Phasor.cpp">
-      <Filter>shiftr\Source</Filter>
+    <ClCompile Include="..\..\Source\Parameters.cpp">
+      <Filter>shiftr\DSP</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Oscillator.cpp">
-      <Filter>shiftr\Source</Filter>
+      <Filter>shiftr\DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\DspProcessorGroup.cpp">
+      <Filter>shiftr\DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ADEnvelope.cpp">
+      <Filter>shiftr\DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Phasor.cpp">
+      <Filter>shiftr\DSP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Utilities.cpp">
+      <Filter>shiftr\DSP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
-      <Filter>shiftr\Source</Filter>
+      <Filter>shiftr\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\PluginEditor.h">
-      <Filter>shiftr\Source</Filter>
+      <Filter>shiftr\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_basics\buffers\juce_AudioDataConverters.h">
       <Filter>Juce Modules\juce_audio_basics\buffers</Filter>
@@ -2558,20 +2573,32 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\RTAS\juce_RTAS_DigiCode_Header.h">
       <Filter>Juce Modules\juce_audio_plugin_client\RTAS</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\DspProcessor.h">
-      <Filter>shiftr\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\DspProcessorGroup.h">
-      <Filter>shiftr\Source</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\Phasor.h">
-      <Filter>shiftr\Source</Filter>
+    <ClInclude Include="..\..\Source\ShiftrEngine.h">
+      <Filter>shiftr\DSP</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Parameters.h">
-      <Filter>shiftr\Source</Filter>
+      <Filter>shiftr\DSP</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Oscillator.h">
-      <Filter>shiftr\Source</Filter>
+      <Filter>shiftr\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DspProcessorGroup.h">
+      <Filter>shiftr\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DspProcessor.h">
+      <Filter>shiftr\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Utilities.h">
+      <Filter>shiftr\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ADEnvelope.h">
+      <Filter>shiftr\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\DspElement.h">
+      <Filter>shiftr\DSP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Phasor.h">
+      <Filter>shiftr\DSP</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,27 +5,26 @@
 #include "DspProcessor.h"
 
 class DspProcessorGroup
-	: DspProcessor
+	: public DspProcessor
 {
 public:
-	DspProcessorGroup(double sampleRate, int numInputChannels, int numOutputChannels)
-		: DspProcessor(sampleRate, numInputChannels, numOutputChannels)
+	DspProcessorGroup()
 	{
 	}
 
 	virtual ~DspProcessorGroup();
 
 public:
+	virtual void init(double sampleRate, int numInputChannels, int numOutputChannels);
+
+public:
 	virtual float process(float input, int channel);
 
-	virtual void parameterChanged(Parameter *value);
+	virtual void parameterChanged(const Parameter *value);
 
-	void Push(DspProcessor *processor)
-	{
-		processors.add(processor);
-	}
+	virtual Array<ParameterListener*> getChildListeners();
 
-private:
+protected:
 	Array<DspProcessor*> processors;
 };
 

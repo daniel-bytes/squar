@@ -13,8 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 
-class DspProcessorGroup;
-class Parameter;
+class ShiftrEngine;
+class Parameters;
 
 //==============================================================================
 /**
@@ -69,8 +69,8 @@ public:
     void setStateInformation (const void* data, int sizeInBytes);
 
 private:
-	ScopedPointer<DspProcessorGroup> processors;
-	Array<ScopedPointer<Parameter>> parameters;
+	ScopedPointer<ShiftrEngine> engine;
+	ScopedPointer<Parameters> parameters;
 
 private:
     //==============================================================================
