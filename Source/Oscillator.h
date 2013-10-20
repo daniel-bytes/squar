@@ -24,7 +24,7 @@ public:
 	virtual ~Oscillator(void);
 
 public:
-	virtual void trigger();
+	virtual void trigger(float velocity);
 
 public:
 	virtual float process(float input, int channel);
@@ -45,6 +45,7 @@ private:
 	float gain;
 	float frequency;
 	float waveform;
+	float velocity;
 
 	ScopedPointer<Phasor> phasor;
 	ScopedPointer<ADEnvelope> envelope;

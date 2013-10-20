@@ -1,9 +1,34 @@
 #include "ShiftrEngine.h"
 #include "Oscillator.h"
+#include "Sequencer.h"
+
+#define MIDI_START_NOTE 48
 
 ShiftrEngine::ShiftrEngine()
 {
-	oscillators.add(new Oscillator(1));
+	sequencer = new Sequencer(NUM_TRACKS, NUM_STEPS_PER_TRACK);
+
+	for (int i = 1; i <= NUM_TRACKS; i++) {
+		oscillators.add(new Oscillator(i));
+	}
+
+	// TODO : Remove!!!
+	sequencer->setStep(0, 0, SequencerElement(1.0, 60));
+	sequencer->setStep(0, 1, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 2, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 3, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 4, SequencerElement(1.0, 60));
+	sequencer->setStep(0, 5, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 6, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 7, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 8, SequencerElement(1.0, 60));
+	sequencer->setStep(0, 9, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 10, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 11, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 12, SequencerElement(1.0, 60));
+	sequencer->setStep(0, 13, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 14, SequencerElement(0.0, 60));
+	sequencer->setStep(0, 15, SequencerElement(0.0, 60));
 }
 
 ShiftrEngine::~ShiftrEngine()
@@ -14,6 +39,8 @@ ShiftrEngine::~ShiftrEngine()
 	}
 
 	oscillators.clear();
+
+	sequencer = nullptr;
 }
 
 Array<Parameter*> ShiftrEngine::getParameters(void)
@@ -22,16 +49,30 @@ Array<Parameter*> ShiftrEngine::getParameters(void)
 	return parameters;
 }
 
-void ShiftrEngine::processMidi(MidiBuffer& midiMessages)
+void ShiftrEngine::processMidi(MidiBuffer& midiMessages, AudioPlayHead::CurrentPositionInfo& posInfo)
 {
 	MidiBuffer::Iterator it(midiMessages);
 	MidiMessage msg(0x80,0,0,0) ;
 	int pos;
 
 	while (it.getNextEvent(msg, pos)) {
-		if (msg.isNoteOn()) {
-			if (msg.getNoteNumber() == 48) {
-				oscillators[0]->trigger();
+		// Handle MIDI note events
+		if (msg.isNoteOn(false)) {
+			int oscToTrigger = msg.getNoteNumber() - MIDI_START_NOTE;
+			if (oscToTrigger >= 0 && oscToTrigger < oscillators.size()) {
+				oscillators[oscToTrigger]->trigger(1.f);
+			}
+		}
+	}
+
+	if (posInfo.isPlaying) {
+		int iPos = int(posInfo.ppqPosition * 24.0);
+		if (sequencer->trigger(iPos)) {
+			for (int t = 0; t < NUM_TRACKS; t++) {
+				auto step = sequencer->getCurrentStep(t);
+				if (step->velocity > 0) {
+					oscillators[t]->trigger(step->velocity);
+				}
 			}
 		}
 	}
@@ -64,6 +105,7 @@ Array<ParameterListener*> ShiftrEngine::getChildListeners()
 {
 	Array<ParameterListener*> arr;
 	arr.addArray(oscillators);
+	arr.add(sequencer);
 
 	return arr;
 }

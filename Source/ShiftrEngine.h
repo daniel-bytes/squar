@@ -3,7 +3,11 @@
 
 #include "DspProcessorGroup.h"
 
+#define NUM_TRACKS 1
+#define NUM_STEPS_PER_TRACK 16
+
 class Oscillator;
+class Sequencer;
 
 class ShiftrEngine
 	: public DspProcessor
@@ -13,7 +17,7 @@ public:
 	~ShiftrEngine();
 
 public:
-	virtual void processMidi(MidiBuffer& midiMessages);
+	virtual void processMidi(MidiBuffer& midiMessages, AudioPlayHead::CurrentPositionInfo& posInfo);
 
 	virtual Array<Parameter*> getParameters(void);
 
@@ -25,6 +29,7 @@ public:
 
 private:
 	Array<Oscillator*> oscillators;
+	ScopedPointer<Sequencer> sequencer;
 };
 
 

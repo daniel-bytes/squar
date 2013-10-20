@@ -23,6 +23,7 @@ public:
 public:
 	void trigger() {
 		state = kADEnvelopeState_Rising;
+		level = 0.f;
 	}
 
 	void setAttack(float value) {

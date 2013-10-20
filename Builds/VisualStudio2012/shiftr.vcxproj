@@ -135,6 +135,7 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\VST\juce_VST_Wrapper.cpp" />
     <ClCompile Include="..\..\Source\ADEnvelope.cpp" />
     <ClCompile Include="..\..\Source\DspProcessorGroup.cpp" />
+    <ClCompile Include="..\..\Source\Filter.cpp" />
     <ClCompile Include="..\..\Source\Oscillator.cpp" />
     <ClCompile Include="..\..\Source\Parameters.cpp" />
     <ClCompile Include="..\..\Source\Phasor.cpp" />
@@ -1149,6 +1150,8 @@
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_graphics\juce_graphics.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_basics\juce_gui_basics.cpp" />
     <ClCompile Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_gui_extra.cpp" />
+    <ClCompile Include="..\..\Source\Sequencer.cpp" />
+    <ClCompile Include="..\..\Source\SequencerTrack.cpp" />
     <ClCompile Include="..\..\Source\ShiftrEngine.cpp" />
     <ClCompile Include="..\..\Source\Utilities.cpp" />
   </ItemGroup>
@@ -1165,6 +1168,7 @@
     <ClInclude Include="..\..\Source\DspElement.h" />
     <ClInclude Include="..\..\Source\DspProcessor.h" />
     <ClInclude Include="..\..\Source\DspProcessorGroup.h" />
+    <ClInclude Include="..\..\Source\Filter.h" />
     <ClInclude Include="..\..\Source\Oscillator.h" />
     <ClInclude Include="..\..\Source\Parameters.h" />
     <ClInclude Include="..\..\Source\Phasor.h" />
@@ -1567,6 +1571,8 @@
     <ClInclude Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_gui_extra.h" />
     <ClInclude Include="..\..\JuceLibraryCode\AppConfig.h" />
     <ClInclude Include="..\..\JuceLibraryCode\JuceHeader.h" />
+    <ClInclude Include="..\..\Source\Sequencer.h" />
+    <ClInclude Include="..\..\Source\SequencerTrack.h" />
     <ClInclude Include="..\..\Source\ShiftrEngine.h" />
     <ClInclude Include="..\..\Source\Utilities.h" />
   </ItemGroup>

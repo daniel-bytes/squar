@@ -19,7 +19,7 @@ Oscillator::~Oscillator()
 	this->envelope = nullptr;
 }
 
-void Oscillator::trigger()
+void Oscillator::trigger(float velocity)
 {
 	this->envelope->trigger();
 }
@@ -37,7 +37,7 @@ float Oscillator::process(float input, int channel)
 	float wave = (value >= this->waveform ? 1.f : -1.f);
 	float env = this->envelope->process(input, channel);
 	
-	return wave * gain * env;
+	return wave * gain * env * velocity;
 }
 
 Array<Parameter*> Oscillator::getParameters()

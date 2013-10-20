@@ -149,7 +149,9 @@ void ShiftrAudioProcessor::releaseResources()
 
 void ShiftrAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
-	engine->processMidi(midiMessages);
+	AudioPlayHead::CurrentPositionInfo posInfo;
+	this->getPlayHead()->getCurrentPosition(posInfo);
+	engine->processMidi(midiMessages, posInfo);
 
     // This is the place where you'd normally do the guts of your plugin's
     // audio processing...

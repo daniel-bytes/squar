@@ -283,7 +283,7 @@
     <Filter Include="shiftr\Application">
       <UniqueIdentifier>{EB6C01F7-5F1B-6E62-3BFA-B0FBE1261C90}</UniqueIdentifier>
     </Filter>
-    <Filter Include="shiftr\DSP">
+    <Filter Include="shiftr\Engine">
       <UniqueIdentifier>{5f75d7a6-8e28-4877-a999-6bbce5cef037}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -1330,25 +1330,34 @@
       <Filter>Juce Modules\juce_audio_plugin_client\VST</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ShiftrEngine.cpp">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Parameters.cpp">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Oscillator.cpp">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\DspProcessorGroup.cpp">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\ADEnvelope.cpp">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Phasor.cpp">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\Utilities.cpp">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Filter.cpp">
+      <Filter>shiftr\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SequencerTrack.cpp">
+      <Filter>shiftr\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Sequencer.cpp">
+      <Filter>shiftr\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2574,31 +2583,40 @@
       <Filter>Juce Modules\juce_audio_plugin_client\RTAS</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ShiftrEngine.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Parameters.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Oscillator.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DspProcessorGroup.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DspProcessor.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Utilities.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\ADEnvelope.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\DspElement.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\Phasor.h">
-      <Filter>shiftr\DSP</Filter>
+      <Filter>shiftr\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Filter.h">
+      <Filter>shiftr\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Sequencer.h">
+      <Filter>shiftr\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SequencerTrack.h">
+      <Filter>shiftr\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
