@@ -3,7 +3,7 @@
 
 #include "DspProcessorGroup.h"
 
-#define NUM_TRACKS 1
+#define NUM_TRACKS 2
 #define NUM_STEPS_PER_TRACK 16
 
 class Oscillator;

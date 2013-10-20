@@ -17,7 +17,7 @@ ShiftrEngine::ShiftrEngine()
 	sequencer->setStep(0, 1, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 2, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 3, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 4, SequencerElement(1.0, 60));
+	sequencer->setStep(0, 4, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 5, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 6, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 7, SequencerElement(0.0, 60));
@@ -25,10 +25,28 @@ ShiftrEngine::ShiftrEngine()
 	sequencer->setStep(0, 9, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 10, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 11, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 12, SequencerElement(1.0, 60));
+	sequencer->setStep(0, 12, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 13, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 14, SequencerElement(0.0, 60));
 	sequencer->setStep(0, 15, SequencerElement(0.0, 60));
+
+	
+	sequencer->setStep(1, 0, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 1, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 2, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 3, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 4, SequencerElement(1.0, 60));
+	sequencer->setStep(1, 5, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 6, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 7, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 8, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 9, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 10, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 11, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 12, SequencerElement(1.0, 60));
+	sequencer->setStep(1, 13, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 14, SequencerElement(0.0, 60));
+	sequencer->setStep(1, 15, SequencerElement(0.0, 60));
 }
 
 ShiftrEngine::~ShiftrEngine()

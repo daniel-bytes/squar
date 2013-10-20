@@ -20,7 +20,7 @@ void Parameters::registerListener(ParameterListener *listener)
 
 	parameters.addArray(params);
 
-	for (int i = 0; i < parameters.size(); i++) {
+	for (int i = 0; i < params.size(); i++) {
 		listenerLookups.add(listener);
 	}
 
