@@ -36,9 +36,25 @@ void Oscillator::init(double sampleRate, int numInputChannels, int numOutputChan
 float Oscillator::process(float input, int channel)
 {
 	float value = this->phasor->process(input, channel);
-	float wave = (value >= this->waveform ? 1.f : -1.f);
 	float env = this->envelope->process(input, channel);
-	
+	float wave = 0.f;
+
+	if (this->waveform <= .5) {
+		// pulse
+		wave = (value >= this->waveform ? 1.f : -1.f);
+	}
+	else {
+		// square to quantized saw
+		float sawLevel = (this->waveform * 2.f) - 1.f;
+		float squareLevel = 1.f - sawLevel;
+
+		float square = (value > .5 ? 1.f : -1.f);
+		float saw = (value * 2.f) - 1.f;
+		saw = (float)((int)(saw * 8.f)) / 8.f;
+
+		wave = (square * squareLevel) + (saw * sawLevel);
+	}
+
 	return wave * gain * env * velocity;
 }
 

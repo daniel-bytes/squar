@@ -1,5 +1,4 @@
 #include "SliderBoxControl.h"
-#include "InterfaceValueListener.h"
 #include "Utilities.h"
 
 SliderBoxControl::SliderBoxControl(SliderBoxControlOrientatons orientation)
