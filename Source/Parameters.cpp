@@ -4,11 +4,13 @@
 void Parameter::setEngineListener(ParameterListener *listener)
 {
 	this->engineListener = listener;
+	this->engineListener->parameterChanged(this);
 }
 
 void Parameter::setInterfaceListener(ParameterListener *listener)
 {
 	this->interfaceListener = listener;
+	this->interfaceListener->parameterChanged(this);
 }
 
 void Parameter::setAndNotifyEngine(float value)

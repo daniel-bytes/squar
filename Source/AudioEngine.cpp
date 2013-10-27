@@ -19,11 +19,11 @@ AudioEngine::~AudioEngine()
 void AudioEngine::configureParameters(Parameters *parameters)
 {
 	// Oscillator 1
-	appendParameter(parameters, oscillators[0], kOscillatorParameters_Gain, "Gain 1", "Gain 1", .25);
-	appendParameter(parameters, oscillators[0], kOscillatorParameters_Freq, "Frequency 1", "Frequency 1", .25);
+	appendParameter(parameters, oscillators[0], kOscillatorParameters_Gain, "Gain 1", "Gain 1", 1.0);
+	appendParameter(parameters, oscillators[0], kOscillatorParameters_Freq, "Frequency 1", "Frequency 1", .15);
 	appendParameter(parameters, oscillators[0], kOscillatorParameters_Waveform, "Waveform 1", "Waveform 1", .5);
 	appendParameter(parameters, oscillators[0], kOscillatorParameters_Attack, "Attack 1", "Attack 1", .05);
-	appendParameter(parameters, oscillators[0], kOscillatorParameters_Decay, "Decay 1", "Decay 1", .5);
+	appendParameter(parameters, oscillators[0], kOscillatorParameters_Decay, "Decay 1", "Decay 1", .95);
 }
 
 void AudioEngine::processMidi(MidiBuffer& midiMessages, AudioPlayHead::CurrentPositionInfo& posInfo)
