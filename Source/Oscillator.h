@@ -26,9 +26,6 @@ public:
 public:
 	int getID(void) const { return id; }
 
-	String getParameterDisplayName(OscillatorParameters parameterType);
-	String getParameterName(OscillatorParameters parameterType);
-
 public:
 	virtual void trigger(float velocity);
 
@@ -38,8 +35,6 @@ public:
 	virtual void init(double sampleRate, int numInputChannels, int numOutputChannels);
 
 	virtual void parameterChanged(const Parameter *value);
-
-	virtual PointerArray<Parameter> getParameters();
 
 private:
 	float getIncrement(void) const {

@@ -8,6 +8,7 @@ Oscillator::Oscillator(int id)
 	this->id = id;
 	this->waveform = .5;
 	this->gain = 1.0;
+	this->velocity = 0;
 
 	this->phasor = new Phasor();
 	this->envelope = new ADEnvelope();
@@ -19,36 +20,9 @@ Oscillator::~Oscillator()
 	this->envelope = nullptr;
 }
 
-String Oscillator::getParameterDisplayName(OscillatorParameters parameterType)
-{
-	switch(parameterType)
-	{
-	case kOscillatorParameters_Gain:
-		return "Gain";
-	case kOscillatorParameters_Freq:
-		return "Frequency";
-	case kOscillatorParameters_Waveform:
-		return "Waveform";
-	case kOscillatorParameters_Attack:
-		return "Attack";
-	case kOscillatorParameters_Decay:
-		return "Decay";
-	default:
-		return "";
-	}
-}
-
-String Oscillator::getParameterName(OscillatorParameters parameterType)
-{
-	String name = getParameterDisplayName(parameterType);
-
-	name << " " << id;
-
-	return name;
-}
-
 void Oscillator::trigger(float velocity)
 {
+	this->velocity = velocity;
 	this->envelope->trigger();
 }
 
@@ -66,44 +40,6 @@ float Oscillator::process(float input, int channel)
 	float env = this->envelope->process(input, channel);
 	
 	return wave * gain * env * velocity;
-}
-
-PointerArray<Parameter> Oscillator::getParameters()
-{
-	PointerArray<Parameter> parameters;
-	String name;
-
-	name = getParameterName(kOscillatorParameters_Gain);
-	name << " " << id;
-	Parameter *gain = new Parameter(kOscillatorParameters_Gain, name, name, .25);
-	gain->setEngineListener(this);
-	parameters.add(gain);
-	
-	name = getParameterName(kOscillatorParameters_Freq);
-	name << " " << id;
-	Parameter *freq = new Parameter(kOscillatorParameters_Freq, name, name, .25);
-	freq->setEngineListener(this);
-	parameters.add(freq);
-	
-	name = getParameterName(kOscillatorParameters_Waveform);
-	name << " " << id;
-	Parameter *wave = new Parameter(kOscillatorParameters_Waveform, name, name, .5);
-	wave->setEngineListener(this);
-	parameters.add(wave);
-	
-	name = getParameterName(kOscillatorParameters_Attack);
-	name << " " << id;
-	Parameter *attack = new Parameter(kOscillatorParameters_Attack, name, name, 0.05);
-	attack->setEngineListener(this);
-	parameters.add(attack);
-	
-	name = getParameterName(kOscillatorParameters_Decay);
-	name << " " << id;
-	Parameter *decay = new Parameter(kOscillatorParameters_Decay, name, name, .5);
-	decay->setEngineListener(this);
-	parameters.add(decay);
-
-	return parameters;
 }
 
 void Oscillator::parameterChanged(const Parameter *value)
