@@ -1,5 +1,4 @@
 #include "XYControl.h"
-#include "InterfaceValueListener.h"
 
 Line<float> createXLine(Rectangle<int> bounds, float yPos)
 {
