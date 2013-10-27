@@ -50,7 +50,7 @@ float Oscillator::process(float input, int channel)
 
 		float square = (value > .5 ? 1.f : -1.f);
 		float saw = (value * 2.f) - 1.f;
-		saw = (float)((int)(saw * 8.f)) / 8.f;
+		saw = (float)((int)(saw * 16.f)) / 16.f;
 
 		wave = (square * squareLevel) + (saw * sawLevel);
 	}
