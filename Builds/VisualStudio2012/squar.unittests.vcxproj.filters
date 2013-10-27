@@ -18,9 +18,15 @@
     <ClInclude Include="..\..\Tests\targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Tests\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Tests\UtilitiesTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Tests\ParameterTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

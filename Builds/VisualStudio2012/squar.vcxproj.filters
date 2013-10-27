@@ -286,6 +286,9 @@
     <Filter Include="squar\Engine">
       <UniqueIdentifier>{5f75d7a6-8e28-4877-a999-6bbce5cef037}</UniqueIdentifier>
     </Filter>
+    <Filter Include="squar\Utility">
+      <UniqueIdentifier>{d23bdb4c-8696-47f2-809b-86816d65d75c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Source\PluginProcessor.cpp">
@@ -1344,9 +1347,6 @@
     <ClCompile Include="..\..\Source\Phasor.cpp">
       <Filter>squar\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\Utilities.cpp">
-      <Filter>squar\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\Filter.cpp">
       <Filter>squar\Engine</Filter>
     </ClCompile>
@@ -1358,6 +1358,21 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\AudioEngine.cpp">
       <Filter>squar\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\Utilities.cpp">
+      <Filter>squar\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\XYControl.cpp">
+      <Filter>squar\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SliderBoxControl.cpp">
+      <Filter>squar\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\SequencerChannelControl.cpp">
+      <Filter>squar\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\InterfaceComponent.cpp">
+      <Filter>squar\Application</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2594,9 +2609,6 @@
     <ClInclude Include="..\..\Source\DspProcessor.h">
       <Filter>squar\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\Utilities.h">
-      <Filter>squar\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\ADEnvelope.h">
       <Filter>squar\Engine</Filter>
     </ClInclude>
@@ -2617,6 +2629,24 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\AudioEngine.h">
       <Filter>squar\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\XYControl.h">
+      <Filter>squar\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\Utilities.h">
+      <Filter>squar\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SliderBoxControl.h">
+      <Filter>squar\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\PointerArray.h">
+      <Filter>squar\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\SequencerChannelControl.h">
+      <Filter>squar\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\InterfaceComponent.h">
+      <Filter>squar\Application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

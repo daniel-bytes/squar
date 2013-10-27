@@ -7,15 +7,6 @@ SequencerTrack::SequencerTrack(int numSteps)
 	}
 }
 
-SequencerTrack::~SequencerTrack()
-{
-	for (auto step : steps) {
-		delete step;
-	}
-
-	steps.clear();
-}
-
 void SequencerTrack::setStep(int step, SequencerElement &element)
 {
 	steps[step]->copy(element);

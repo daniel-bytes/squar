@@ -12,8 +12,13 @@
 #define PLUGINEDITOR_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "PointerArray.h"
 #include "PluginProcessor.h"
 
+class SequencerChannelControl;
+class SliderBoxControl;
+class Parameters;
+class InterfaceComponent;
 
 //==============================================================================
 /**
@@ -27,6 +32,18 @@ public:
     //==============================================================================
     // This is just a standard Juce paint method...
     void paint (Graphics& g);
+
+private:
+	//OwnedPointerArray<SequencerChannelControl> sequencerChannels;
+	OwnedPointerArray<InterfaceComponent> controls;
+
+    SquarAudioProcessor* getProcessor() const
+    {
+        return static_cast <SquarAudioProcessor*> (getAudioProcessor());
+    }
+
+	void configureParameters(Parameters *parameters);
+	void appendComponent(InterfaceComponent *component, String id, bool visible, int x, int y, int width, int height);
 };
 
 

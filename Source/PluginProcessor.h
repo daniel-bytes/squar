@@ -14,6 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 
 class AudioEngine;
+class Parameter;
 class Parameters;
 
 //==============================================================================
@@ -43,6 +44,7 @@ public:
 
     float getParameter (int index);
     void setParameter (int index, float newValue);
+	Parameters* getParameters();
 
     const String getParameterName (int index);
     const String getParameterText (int index);
@@ -67,6 +69,10 @@ public:
     //==============================================================================
     void getStateInformation (MemoryBlock& destData);
     void setStateInformation (const void* data, int sizeInBytes);
+
+public:
+	int getNumTracks() const;
+	int getNumStepsPerTrack() const;
 
 private:
 	ScopedPointer<AudioEngine> engine;

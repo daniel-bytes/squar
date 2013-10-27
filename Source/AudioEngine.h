@@ -1,13 +1,13 @@
 #ifndef __AudioEngine_H__
 #define __AudioEngine_H__
 
+#include "PointerArray.h"
 #include "DspProcessorGroup.h"
-
-#define NUM_TRACKS 2
-#define NUM_STEPS_PER_TRACK 16
 
 class Oscillator;
 class Sequencer;
+class Parameter;
+class ParameterListener;
 
 class AudioEngine
 	: public DspProcessor
@@ -19,17 +19,22 @@ public:
 public:
 	virtual void processMidi(MidiBuffer& midiMessages, AudioPlayHead::CurrentPositionInfo& posInfo);
 
-	virtual Array<Parameter*> getParameters(void);
+	virtual void configureParameters(Parameters *parameters);
 
 	virtual float process(float input, int channel);
 
 	virtual void init(double sampleRate, int numInputChannels, int numOutputChannels);
 
-	virtual Array<ParameterListener*> getChildListeners();
+public:
+	int getNumTracks() const { return 1; }
+
+	int getNumStepsPerTrack() const { return 16; }
 
 private:
-	Array<Oscillator*> oscillators;
+	OwnedPointerArray<Oscillator> oscillators;
 	ScopedPointer<Sequencer> sequencer;
+
+	void appendParameter(Parameters *parameters, ParameterListener *engineListener, int id, String name, String text, float value);
 };
 
 

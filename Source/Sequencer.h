@@ -2,6 +2,7 @@
 #define __SEQUENCER_H__
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "PointerArray.h"
 #include "SequencerTrack.h"
 #include "Parameters.h"
 
@@ -28,14 +29,14 @@ public:
 
 public:
 	virtual void parameterChanged(const Parameter *value);
-	virtual Array<Parameter*> getParameters();
-	virtual Array<ParameterListener*> getChildListeners();
+	virtual PointerArray<Parameter> getParameters();
+	virtual PointerArray<ParameterListener> getChildListeners();
 
 private:
 	int numSteps;
 	int currentStep;
 	int clockResolution;
-	Array<SequencerTrack*> tracks;
+	OwnedPointerArray<SequencerTrack> tracks;
 };
 
 #endif //__SEQUENCER_H__

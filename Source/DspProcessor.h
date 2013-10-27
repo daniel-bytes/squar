@@ -13,9 +13,9 @@ public:
 
 	virtual void parameterChanged(const Parameter *value) { }
 
-	virtual Array<Parameter*> getParameters(void) { return Array<Parameter*>(); }
+	virtual PointerArray<Parameter> getParameters(void) { return PointerArray<Parameter>(); }
 	
-	virtual Array<ParameterListener*> getChildListeners() { return Array<ParameterListener*>(); }
+	virtual PointerArray<ParameterListener> getChildListeners() { return PointerArray<ParameterListener>(); }
 };
 
 #endif //__DSPPROCESSOR_H__

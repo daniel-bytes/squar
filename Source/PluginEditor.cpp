@@ -10,14 +10,28 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-
+#include "sequencerChannelControl.h"
+#include "SliderBoxControl.h"
 
 //==============================================================================
 SquarAudioProcessorEditor::SquarAudioProcessorEditor (SquarAudioProcessor* ownerFilter)
     : AudioProcessorEditor (ownerFilter)
 {
+	Parameters *parameters = ownerFilter->getParameters();
+
+	int numChannels = getProcessor()->getNumTracks();
+	int numSteps = getProcessor()->getNumStepsPerTrack();
+	
+	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Gain 1", true, 5, 5, 25, 100);
+	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Frequency 1", true, 35, 5, 25, 100);
+	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Waveform 1", true, 65, 5, 25, 100);
+	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Attack 1", true, 95, 5, 25, 100);
+	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Decay 1", true, 125, 5, 25, 100);
+
+	configureParameters(parameters);
+
     // This is where our plugin's editor size is set.
-    setSize (400, 300);
+    setSize (800, 600);
 }
 
 SquarAudioProcessorEditor::~SquarAudioProcessorEditor()
@@ -28,9 +42,40 @@ SquarAudioProcessorEditor::~SquarAudioProcessorEditor()
 void SquarAudioProcessorEditor::paint (Graphics& g)
 {
     g.fillAll (Colours::white);
+/*
     g.setColour (Colours::black);
     g.setFont (15.0f);
     g.drawFittedText ("Hello World!",
                       0, 0, getWidth(), getHeight(),
                       Justification::centred, 1);
+*/
+}
+
+void SquarAudioProcessorEditor::configureParameters(Parameters *parameters)
+{
+	for (int i = 0; i < parameters->size(); i++) {
+		auto parameter = parameters->get(i);
+
+		for (InterfaceComponent *interfaceComponent : controls) {
+			if (interfaceComponent->getComponentID() == parameter->getName()) {
+				interfaceComponent->addParameter(parameter);
+				parameter->setInterfaceListener(interfaceComponent);
+			}
+		}
+	}
+}
+
+void SquarAudioProcessorEditor::appendComponent(InterfaceComponent *component, String id, bool visible, int x, int y, int width, int height)
+{
+	component->setComponentID(id);
+
+	if (visible) {
+		addAndMakeVisible(component);
+	}
+	else {
+		addChildComponent(component);
+	}
+
+	component->setBounds(x, y, width, height);
+	controls.add(component);
 }

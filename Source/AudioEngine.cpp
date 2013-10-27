@@ -6,65 +6,24 @@
 
 AudioEngine::AudioEngine()
 {
-	sequencer = new Sequencer(NUM_TRACKS, NUM_STEPS_PER_TRACK);
+	sequencer = new Sequencer(getNumTracks(), getNumStepsPerTrack());
 
-	for (int i = 1; i <= NUM_TRACKS; i++) {
-		oscillators.add(new Oscillator(i));
-	}
-
-	// TODO : Remove!!!
-	sequencer->setStep(0, 0, SequencerElement(1.0, 60));
-	sequencer->setStep(0, 1, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 2, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 3, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 4, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 5, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 6, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 7, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 8, SequencerElement(1.0, 60));
-	sequencer->setStep(0, 9, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 10, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 11, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 12, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 13, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 14, SequencerElement(0.0, 60));
-	sequencer->setStep(0, 15, SequencerElement(0.0, 60));
-
-	
-	sequencer->setStep(1, 0, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 1, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 2, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 3, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 4, SequencerElement(1.0, 60));
-	sequencer->setStep(1, 5, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 6, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 7, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 8, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 9, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 10, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 11, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 12, SequencerElement(1.0, 60));
-	sequencer->setStep(1, 13, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 14, SequencerElement(0.0, 60));
-	sequencer->setStep(1, 15, SequencerElement(0.0, 60));
+	oscillators.add(new Oscillator(1));
 }
 
 AudioEngine::~AudioEngine()
 {
-	for (auto osc : oscillators)
-	{
-		delete osc;
-	}
-
-	oscillators.clear();
-
 	sequencer = nullptr;
 }
 
-Array<Parameter*> AudioEngine::getParameters(void)
+void AudioEngine::configureParameters(Parameters *parameters)
 {
-	Array<Parameter*> parameters;
-	return parameters;
+	// Oscillator 1
+	appendParameter(parameters, oscillators[0], kOscillatorParameters_Gain, "Gain 1", "Gain 1", .25);
+	appendParameter(parameters, oscillators[0], kOscillatorParameters_Freq, "Frequency 1", "Frequency 1", .25);
+	appendParameter(parameters, oscillators[0], kOscillatorParameters_Waveform, "Waveform 1", "Waveform 1", .5);
+	appendParameter(parameters, oscillators[0], kOscillatorParameters_Attack, "Attack 1", "Attack 1", .05);
+	appendParameter(parameters, oscillators[0], kOscillatorParameters_Decay, "Decay 1", "Decay 1", .5);
 }
 
 void AudioEngine::processMidi(MidiBuffer& midiMessages, AudioPlayHead::CurrentPositionInfo& posInfo)
@@ -86,7 +45,7 @@ void AudioEngine::processMidi(MidiBuffer& midiMessages, AudioPlayHead::CurrentPo
 	if (posInfo.isPlaying) {
 		int iPos = int(posInfo.ppqPosition * 24.0);
 		if (sequencer->trigger(iPos)) {
-			for (int t = 0; t < NUM_TRACKS; t++) {
+			for (int t = 0; t < getNumTracks(); t++) {
 				auto step = sequencer->getCurrentStep(t);
 				if (step->velocity > 0) {
 					oscillators[t]->trigger(step->velocity);
@@ -119,11 +78,9 @@ void AudioEngine::init(double sampleRate, int numInputChannels, int numOutputCha
 	}
 }
 
-Array<ParameterListener*> AudioEngine::getChildListeners()
+void AudioEngine::appendParameter(Parameters *parameters, ParameterListener *engineListener, int id, String name, String text, float value)
 {
-	Array<ParameterListener*> arr;
-	arr.addArray(oscillators);
-	arr.add(sequencer);
-
-	return arr;
+	auto parameter = new Parameter(id, name, text, value);
+	parameter->setEngineListener(engineListener);
+	parameters->appendParameter(parameter);
 }

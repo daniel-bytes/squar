@@ -24,6 +24,12 @@ public:
 	virtual ~Oscillator(void);
 
 public:
+	int getID(void) const { return id; }
+
+	String getParameterDisplayName(OscillatorParameters parameterType);
+	String getParameterName(OscillatorParameters parameterType);
+
+public:
 	virtual void trigger(float velocity);
 
 public:
@@ -33,7 +39,7 @@ public:
 
 	virtual void parameterChanged(const Parameter *value);
 
-	virtual Array<Parameter*> getParameters();
+	virtual PointerArray<Parameter> getParameters();
 
 private:
 	float getIncrement(void) const {
@@ -50,5 +56,6 @@ private:
 	ScopedPointer<Phasor> phasor;
 	ScopedPointer<ADEnvelope> envelope;
 };
+
 
 #endif //__OSCILLATOR_H__

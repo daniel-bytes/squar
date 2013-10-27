@@ -11,11 +11,6 @@ Sequencer::Sequencer(int numTracks, int numSteps)
 
 Sequencer::~Sequencer()
 {
-	for (auto track : tracks) {
-		delete track;
-	}
-
-	tracks.clear();
 }
 
 
@@ -37,14 +32,14 @@ bool Sequencer::trigger(int clockCount)
 	return false;
 }
 
-Array<Parameter*> Sequencer::getParameters()
+PointerArray<Parameter> Sequencer::getParameters()
 {
-	Array<Parameter*> parameters;
+	PointerArray<Parameter> parameters;
 
 	return parameters;
 }
 
-Array<ParameterListener*> Sequencer::getChildListeners()
+PointerArray<ParameterListener> Sequencer::getChildListeners()
 {
-	return Array<ParameterListener*>();
+	return PointerArray<ParameterListener>();
 }

@@ -1,16 +1,17 @@
+#include "stdafx.h"
 #include "CppUnitTest.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 #include "../Source/Utilities.h"
 
-namespace shiftrunittests
+namespace squarunittests
 {		
 	TEST_CLASS(UtilitiesTests)
 	{
 	public:
 		
-		TEST_METHOD(TestClipFunction)
+		TEST_METHOD(Clip_Test)
 		{
 			float value;
 
@@ -24,7 +25,7 @@ namespace shiftrunittests
 			Assert::AreEqual(.4f, value, 0.f);
 		}
 		
-		TEST_METHOD(TestScaleFunction)
+		TEST_METHOD(Scale_Test)
 		{
 			float value;
 

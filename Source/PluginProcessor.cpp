@@ -19,13 +19,24 @@ SquarAudioProcessor::SquarAudioProcessor()
 	parameters = new Parameters();
 	engine = new AudioEngine();
 
-	parameters->registerListener(engine);
+	engine->configureParameters(parameters);
 }
 
 SquarAudioProcessor::~SquarAudioProcessor()
 {
 	engine = nullptr;
 	parameters = nullptr;
+}
+
+
+int SquarAudioProcessor::getNumTracks() const
+{
+	return engine->getNumTracks();
+}
+
+int SquarAudioProcessor::getNumStepsPerTrack() const
+{
+	return engine->getNumStepsPerTrack();
 }
 
 //==============================================================================
@@ -42,24 +53,29 @@ int SquarAudioProcessor::getNumParameters()
 float SquarAudioProcessor::getParameter (int index)
 {
 	auto parameter = parameters->get(index);
-	return parameter->value;
+	return parameter->getValue();
 }
 
 void SquarAudioProcessor::setParameter (int index, float newValue)
 {
-	parameters->set(index, newValue);
+	auto parameter = parameters->get(index);
+	parameter->setAndNotifyAll(newValue);
 }
 
 const String SquarAudioProcessor::getParameterName (int index)
 {
 	auto parameter = parameters->get(index);
-	return parameter->name;
+	return parameter->getName();
 }
 
 const String SquarAudioProcessor::getParameterText (int index)
 {
 	auto parameter = parameters->get(index);
-	return parameter->text;
+	return parameter->getText();
+}
+
+Parameters* SquarAudioProcessor::getParameters() {
+	return parameters;
 }
 
 const String SquarAudioProcessor::getInputChannelName (int channelIndex) const
@@ -180,7 +196,7 @@ void SquarAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& m
 //==============================================================================
 bool SquarAudioProcessor::hasEditor() const
 {
-    return false; // (change this to false if you choose to not supply an editor)
+    return true; // (change this to false if you choose to not supply an editor)
 }
 
 AudioProcessorEditor* SquarAudioProcessor::createEditor()

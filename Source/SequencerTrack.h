@@ -2,6 +2,7 @@
 #define __SEQUENCERTRACK_H__
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "PointerArray.h"
 
 struct SequencerElement
 {
@@ -25,7 +26,6 @@ class SequencerTrack
 {
 public:
 	SequencerTrack(int numSteps);
-	~SequencerTrack();
 
 public:
 	void setStep(int step, SequencerElement &element);
@@ -34,7 +34,7 @@ public:
 	int getNumSteps() const { return steps.size(); }
 
 private:
-	Array<SequencerElement*> steps;
+	OwnedPointerArray<SequencerElement> steps;
 };
 
 #endif //__SEQUENCERTRACK_H__

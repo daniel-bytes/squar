@@ -1,12 +1,6 @@
 #include "DspProcessorGroup.h"
 
-DspProcessorGroup::~DspProcessorGroup()
-{
-	for (auto processor : processors)
-	{
-		delete processor;
-	}
-}
+
 
 float DspProcessorGroup::process(float input, int channel)
 {
@@ -26,9 +20,9 @@ void DspProcessorGroup::parameterChanged(const Parameter *value)
 	}
 }
 
-Array<ParameterListener*> DspProcessorGroup::getChildListeners()
+PointerArray<ParameterListener> DspProcessorGroup::getChildListeners()
 {
-	Array<ParameterListener*> listeners;
+	PointerArray<ParameterListener> listeners;
 
 	for (auto processor : processors)
 	{
