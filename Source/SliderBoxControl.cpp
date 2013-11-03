@@ -1,10 +1,10 @@
 #include "SliderBoxControl.h"
 #include "Utilities.h"
 
-SliderBoxControl::SliderBoxControl(SliderBoxControlOrientatons orientation)
+SliderBoxControl::SliderBoxControl(SliderBoxControlOrientaton orientation)
 	: orientation(orientation), value(.5), innerColour(Colours::darkgrey)
 {
-	if (orientation == kSliderBoxControlOrientatons_Vertical) {
+	if (orientation == SliderBoxControlOrientaton::Vertical) {
 		setSize(25, 100);
 	}
 	else {
@@ -28,7 +28,7 @@ void SliderBoxControl::paint (Graphics& g)
 	g.drawRect(bounds, borderWidth);
 	
 	g.setColour(innerColour);
-	if (orientation == kSliderBoxControlOrientatons_Vertical) {
+	if (orientation == SliderBoxControlOrientaton::Vertical) {
 		float y = height - (height * value);
 		g.fillRect(borderWidth, y + borderWidth, width - (borderWidth * 2.f), height - (borderWidth * 2.f));
 	}
@@ -55,7 +55,7 @@ void SliderBoxControl::handleMouseDown(const MouseEvent &event)
 	float height = bounds.getHeight();
 	float width = bounds.getWidth();
 	
-	if (orientation == kSliderBoxControlOrientatons_Vertical) {
+	if (orientation == SliderBoxControlOrientaton::Vertical) {
 		value = 1.f - ((float)position.y / height);
 	}
 	else {

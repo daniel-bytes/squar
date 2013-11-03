@@ -3,11 +3,11 @@
 
 #include "InterfaceComponent.h"
 
-enum XYControlAxis
+enum class XYControlAxis
 {
-	kXYControlAxis_X,
-	kXYControlAxis_Y,
-	kXYControlAxis_NumAxis
+	X,
+	Y,
+	NumTypes
 };
 
 class InterfaceDualValueListener;

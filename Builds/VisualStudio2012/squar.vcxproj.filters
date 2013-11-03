@@ -2648,6 +2648,9 @@
     <ClInclude Include="..\..\Source\InterfaceComponent.h">
       <Filter>squar\Application</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\OscillatorChannel.h">
+      <Filter>squar\Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_basics\juce_module_info">
@@ -2695,6 +2698,7 @@
     <None Include="..\..\JuceLibraryCode\modules\juce_audio_plugin_client\RTAS\juce_RTAS_MacUtilities.mm">
       <Filter>Juce Modules\juce_audio_plugin_client\RTAS</Filter>
     </None>
+    <None Include="..\..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc">

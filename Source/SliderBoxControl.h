@@ -3,11 +3,11 @@
 
 #include "InterfaceComponent.h"
 
-enum SliderBoxControlOrientatons
+enum class SliderBoxControlOrientaton
 {
-	kSliderBoxControlOrientatons_Vertical,
-	kSliderBoxControlOrientatons_Horizontal,
-	kSliderBoxControlOrientatons_NumOrientations
+	Vertical,
+	Horizontal,
+	NumTypes
 };
 
 class InterfaceValueListener;
@@ -16,7 +16,7 @@ class SliderBoxControl
 	: public InterfaceComponent
 {
 public:
-	SliderBoxControl(SliderBoxControlOrientatons orientation);
+	SliderBoxControl(SliderBoxControlOrientaton orientation);
 	~SliderBoxControl();
 
 public:
@@ -36,7 +36,7 @@ public:
 
 private:
 	float value;
-	SliderBoxControlOrientatons orientation;
+	SliderBoxControlOrientaton orientation;
 	Colour innerColour;
 };
 

@@ -1176,6 +1176,7 @@
     <ClInclude Include="..\..\Source\Filter.h" />
     <ClInclude Include="..\..\Source\InterfaceComponent.h" />
     <ClInclude Include="..\..\Source\Oscillator.h" />
+    <ClInclude Include="..\..\Source\OscillatorChannel.h" />
     <ClInclude Include="..\..\Source\Parameters.h" />
     <ClInclude Include="..\..\Source\Phasor.h" />
     <ClInclude Include="..\..\Source\PluginProcessor.h" />
@@ -1602,6 +1603,7 @@
     <None Include="..\..\JuceLibraryCode\modules\juce_graphics\juce_module_info" />
     <None Include="..\..\JuceLibraryCode\modules\juce_gui_basics\juce_module_info" />
     <None Include="..\..\JuceLibraryCode\modules\juce_gui_extra\juce_module_info" />
+    <None Include="..\..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include=".\resources.rc" />

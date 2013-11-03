@@ -60,26 +60,26 @@ float Oscillator::process(float input, int channel)
 
 void Oscillator::parameterChanged(const Parameter *value)
 {
-	switch((OscillatorParameters)value->getID())
+	switch((OscillatorParameter)value->getID())
 	{
-	case kOscillatorParameters_Freq:
+	case OscillatorParameter::Freq:
 		this->frequency = scale(value->getValue(), 50.f, 2000.f);
 		this->phasor->setFrequency(this->frequency);
 		break;
 
-	case kOscillatorParameters_Gain:
+	case OscillatorParameter::Gain:
 		this->gain = value->getValue();
 		break;
 
-	case kOscillatorParameters_Waveform:
+	case OscillatorParameter::Waveform:
 		this->waveform = scale(value->getValue(), .05f, .95f);
 		break;
 
-	case kOscillatorParameters_Attack:
+	case OscillatorParameter::Attack:
 		this->envelope->setAttack(value->getValue());
 		break;
 
-	case kOscillatorParameters_Decay:
+	case OscillatorParameter::Decay:
 		this->envelope->setDecay(value->getValue());
 		break;
 	}

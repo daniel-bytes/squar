@@ -8,6 +8,7 @@ class Oscillator;
 class Sequencer;
 class Parameter;
 class ParameterListener;
+enum class OscillatorParameter;
 
 class AudioEngine
 	: public DspProcessor
@@ -34,7 +35,7 @@ private:
 	OwnedPointerArray<Oscillator> oscillators;
 	ScopedPointer<Sequencer> sequencer;
 
-	void appendParameter(Parameters *parameters, ParameterListener *engineListener, int id, String name, String text, float value);
+	void appendParameter(Parameters *parameters, ParameterListener *engineListener, OscillatorParameter id, String name, String text, float value);
 };
 
 

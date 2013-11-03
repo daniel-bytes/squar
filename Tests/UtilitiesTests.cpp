@@ -15,13 +15,13 @@ namespace squarunittests
 		{
 			float value;
 
-			value = clip(.5, 0, 1);
+			value = clip(.5f, 0.f, 1.f);
 			Assert::AreEqual(.5f, value, 0.f);
 			
-			value = clip(.5f, 1, 2);
+			value = clip(.5f, 1.f, 2.f);
 			Assert::AreEqual(1.f, value, 0.f);
 			
-			value = clip(.5f, 0, .4);
+			value = clip(.5f, 0.f, .4f);
 			Assert::AreEqual(.4f, value, 0.f);
 		}
 		
@@ -29,16 +29,16 @@ namespace squarunittests
 		{
 			float value;
 
-			value = scale(.25, 0, 100);
+			value = scale(.25f, 0.f, 100.f);
 			Assert::AreEqual(25.f, value, 0.f);
 
-			value = scale(.25, 20, 100);
+			value = scale(.25f, 20.f, 100.f);
 			Assert::AreEqual(40.f, value, 0.f);
 
-			value = scale(.25, -20, -100);
+			value = scale(.25f, -20.f, -100.f);
 			Assert::AreEqual(-40.f, value, 0.f);
 
-			value = scale(.25, 100, 20);
+			value = scale(.25f, 100.f, 20.f);
 			Assert::AreEqual(80.f, value, 0.f);
 		}
 	};

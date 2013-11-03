@@ -22,11 +22,11 @@ SquarAudioProcessorEditor::SquarAudioProcessorEditor (SquarAudioProcessor* owner
 	int numChannels = getProcessor()->getNumTracks();
 	int numSteps = getProcessor()->getNumStepsPerTrack();
 	
-	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Gain 1", true, 5, 5, 25, 100);
-	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Frequency 1", true, 35, 5, 25, 100);
-	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Waveform 1", true, 65, 5, 25, 100);
-	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Attack 1", true, 95, 5, 25, 100);
-	appendComponent(new SliderBoxControl(kSliderBoxControlOrientatons_Vertical), "Decay 1", true, 125, 5, 25, 100);
+	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Gain 1", true, 5, 5, 25, 100);
+	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Frequency 1", true, 35, 5, 25, 100);
+	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Waveform 1", true, 65, 5, 25, 100);
+	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Attack 1", true, 95, 5, 25, 100);
+	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Decay 1", true, 125, 5, 25, 100);
 
 	configureParameters(parameters);
 

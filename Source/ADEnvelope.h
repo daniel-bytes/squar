@@ -3,12 +3,12 @@
 
 #include "DspElement.h"
 
-enum ADEnvelopeState
+enum class ADEnvelopeState
 {
-	kADEnvelopeState_Off,
-	kADEnvelopeState_Rising,
-	kADEnvelopeState_Falling,
-	kADEnvelopeState_NumStates
+	Off,
+	Rising,
+	Falling,
+	NumTypes
 };
 
 class ADEnvelope
@@ -16,13 +16,13 @@ class ADEnvelope
 {
 public:
 	ADEnvelope()
-		: level(0), attack(0), decay(1), state(kADEnvelopeState_Off)
+		: level(0), attack(0), decay(1), state(ADEnvelopeState::Off)
 	{
 	}
 
 public:
 	void trigger() {
-		state = kADEnvelopeState_Rising;
+		state = ADEnvelopeState::Rising;
 		level = 0.f;
 	}
 

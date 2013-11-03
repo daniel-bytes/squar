@@ -5,7 +5,7 @@ SequencerChannelControl::SequencerChannelControl(int numSteps, int stepsPerRow)
 	: numSteps(numSteps), stepsPerRow(stepsPerRow)
 {
 	for (int i = 0; i < numSteps; i++) {
-		auto control = new SliderBoxControl(kSliderBoxControlOrientatons_Vertical);
+		auto control = new SliderBoxControl(SliderBoxControlOrientaton::Vertical);
 		this->sliders.add(control);
 
 		addAndMakeVisible(control);

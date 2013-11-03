@@ -19,11 +19,11 @@ AudioEngine::~AudioEngine()
 void AudioEngine::configureParameters(Parameters *parameters)
 {
 	// Oscillator 1
-	appendParameter(parameters, oscillators[0], kOscillatorParameters_Gain, "Gain 1", "Gain 1", 1.0);
-	appendParameter(parameters, oscillators[0], kOscillatorParameters_Freq, "Frequency 1", "Frequency 1", .15);
-	appendParameter(parameters, oscillators[0], kOscillatorParameters_Waveform, "Waveform 1", "Waveform 1", .5);
-	appendParameter(parameters, oscillators[0], kOscillatorParameters_Attack, "Attack 1", "Attack 1", .05);
-	appendParameter(parameters, oscillators[0], kOscillatorParameters_Decay, "Decay 1", "Decay 1", .95);
+	appendParameter(parameters, oscillators[0], OscillatorParameter::Gain, "Gain 1", "Gain 1", 1.0);
+	appendParameter(parameters, oscillators[0], OscillatorParameter::Freq, "Frequency 1", "Frequency 1", .15);
+	appendParameter(parameters, oscillators[0], OscillatorParameter::Waveform, "Waveform 1", "Waveform 1", .5);
+	appendParameter(parameters, oscillators[0], OscillatorParameter::Attack, "Attack 1", "Attack 1", .05);
+	appendParameter(parameters, oscillators[0], OscillatorParameter::Decay, "Decay 1", "Decay 1", .95);
 }
 
 void AudioEngine::processMidi(MidiBuffer& midiMessages, AudioPlayHead::CurrentPositionInfo& posInfo)
@@ -78,9 +78,9 @@ void AudioEngine::init(double sampleRate, int numInputChannels, int numOutputCha
 	}
 }
 
-void AudioEngine::appendParameter(Parameters *parameters, ParameterListener *engineListener, int id, String name, String text, float value)
+void AudioEngine::appendParameter(Parameters *parameters, ParameterListener *engineListener, OscillatorParameter id, String name, String text, float value)
 {
-	auto parameter = new Parameter(id, name, text, value);
+	auto parameter = new Parameter((int)id, name, text, value);
 	parameter->setEngineListener(engineListener);
 	parameters->appendParameter(parameter);
 }

@@ -6,14 +6,14 @@
 class Phasor;
 class ADEnvelope;
 
-enum OscillatorParameters
+enum class OscillatorParameter
 {
-	kOscillatorParameters_Gain,
-	kOscillatorParameters_Freq,
-	kOscillatorParameters_Waveform,
-	kOscillatorParameters_Attack,
-	kOscillatorParameters_Decay,
-	kOscillatorParameters_NumParameters
+	Gain,
+	Freq,
+	Waveform,
+	Attack,
+	Decay,
+	NumTypes
 };
 
 class Oscillator

@@ -54,8 +54,8 @@ void XYControl::handleMouseDown(const MouseEvent &event)
 	posX = (float)position.x / (float)bounds.getWidth();
 	posY = (float)position.y / (float)bounds.getHeight();
 
-	notifyEngine(posX, kXYControlAxis_X);
-	notifyEngine(posY, kXYControlAxis_Y);
+	notifyEngine(posX, (int)XYControlAxis::X);
+	notifyEngine(posY, (int)XYControlAxis::Y);
 
 	repaint();
 }
