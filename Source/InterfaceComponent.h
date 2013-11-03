@@ -14,11 +14,20 @@ public:
 
 public:
 	virtual void parameterChanged(const Parameter *value) = 0;
+	void configureParameter(Parameter *parameter);
+
+	void appendComponent(InterfaceComponent *component, String id, bool visible, int x, int y, int width, int height);
 
 protected:
 	PointerArray<Parameter> parameters;
+	OwnedPointerArray<InterfaceComponent> controls;
 };
 
+inline String createName(String parameterName, int channelNumber)
+{
+	parameterName << " " << channelNumber;
+	return parameterName;
+}
 
 
 #endif //__INTERFACECOMPONENTS_H__

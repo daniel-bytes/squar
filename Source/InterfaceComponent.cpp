@@ -15,3 +15,30 @@ void InterfaceComponent::parameterChanged(const Parameter *value)
 {
 	// let overriding class handle value
 }
+
+void InterfaceComponent::appendComponent(InterfaceComponent *component, String id, bool visible, int x, int y, int width, int height)
+{
+	component->setComponentID(id);
+
+	if (visible) {
+		addAndMakeVisible(component);
+	}
+	else {
+		addChildComponent(component);
+	}
+
+	component->setBounds(x, y, width, height);
+	controls.add(component);
+}
+
+void InterfaceComponent::configureParameter(Parameter *parameter)
+{
+	if (this->getComponentID() == parameter->getName()) {
+		this->addParameter(parameter);
+		parameter->setInterfaceListener(this);
+	}
+
+	for (InterfaceComponent *interfaceComponent : controls) {
+		interfaceComponent->configureParameter(parameter);
+	}
+}

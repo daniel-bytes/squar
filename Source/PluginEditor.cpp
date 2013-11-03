@@ -10,8 +10,8 @@
 
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
-#include "sequencerChannelControl.h"
 #include "SliderBoxControl.h"
+#include "OscillatorChannel.h"
 
 //==============================================================================
 SquarAudioProcessorEditor::SquarAudioProcessorEditor (SquarAudioProcessor* ownerFilter)
@@ -21,12 +21,8 @@ SquarAudioProcessorEditor::SquarAudioProcessorEditor (SquarAudioProcessor* owner
 
 	int numChannels = getProcessor()->getNumTracks();
 	int numSteps = getProcessor()->getNumStepsPerTrack();
-	
-	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Gain 1", true, 5, 5, 25, 100);
-	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Frequency 1", true, 35, 5, 25, 100);
-	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Waveform 1", true, 65, 5, 25, 100);
-	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Attack 1", true, 95, 5, 25, 100);
-	appendComponent(new SliderBoxControl(SliderBoxControlOrientaton::Vertical), "Decay 1", true, 125, 5, 25, 100);
+
+	appendComponent(new OscillatorChannel(1, 48), "Oscillator Channel 1", true, 5, 5, 700, 600);
 
 	configureParameters(parameters);
 
@@ -57,10 +53,7 @@ void SquarAudioProcessorEditor::configureParameters(Parameters *parameters)
 		auto parameter = parameters->get(i);
 
 		for (InterfaceComponent *interfaceComponent : controls) {
-			if (interfaceComponent->getComponentID() == parameter->getName()) {
-				interfaceComponent->addParameter(parameter);
-				parameter->setInterfaceListener(interfaceComponent);
-			}
+			interfaceComponent->configureParameter(parameter);
 		}
 	}
 }

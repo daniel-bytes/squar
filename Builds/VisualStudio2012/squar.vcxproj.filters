@@ -1374,6 +1374,15 @@
     <ClCompile Include="..\..\Source\InterfaceComponent.cpp">
       <Filter>squar\Application</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\OscillatorChannel.cpp">
+      <Filter>squar\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\ClockHandler.cpp">
+      <Filter>squar\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NoteSequencer.cpp">
+      <Filter>squar\Application</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Source\PluginProcessor.h">
@@ -2649,6 +2658,12 @@
       <Filter>squar\Application</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\OscillatorChannel.h">
+      <Filter>squar\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NoteSequencer.h">
+      <Filter>squar\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\ClockHandler.h">
       <Filter>squar\Application</Filter>
     </ClInclude>
   </ItemGroup>
